@@ -24,6 +24,13 @@ Zwei Versionen derselben App:
 - Einmal-Migration `S.v10`: blendet Diese Woche/Projekte/Kunden & Akquise aus, im Dashboard auch Geburtstage und Termine & Fristen, Zuhause→Einkauf nur wenn leer. Nichts gelöscht, zurückholen über „Karten bearbeiten“.
 - Listenzeilen (`.row.q`): Unteraufgaben, Mo–Fr und Löschen erst bei Hover bzw. nach Tippen auf „⋯“.
 
+## Körper seit App-Version 22 (2026-11-25)
+- **Training heute** (`train`): Tag aus dem Sport-Plan (Mo/Di/Do/Fr, Titel beginnt mit „Mo ·“ usw.), Woche im 4-Wochen-Block ab `S.blk` (Start 2026-11-19), Hinweis aus „Steigerung über 4 Wochen“. Haken nur zur Übersicht (`S.trn`), Gewicht nur per „Eintragen“ in den Verlauf.
+- **„Heute trainiert“ zählt nur per Antippen** (`S.sp`), Übungseinträge zählen nicht mehr automatisch (Migration `S.v11` übernimmt alte Tage).
+- **Einkaufsliste**: Abschnitte statt Unteraufgaben, Abgehaktes unten, neue Artikel per Stichwort in die Abteilung (`SHK`), „Neue Woche“ setzt Haken zurück.
+- **Menüplan**: Gericht antippen zeigt das passende Rezept aus „Rezepte“ (erstes Wort des Rezepttitels). „Menüplan bearbeiten“ zeigt die normale Liste.
+- Automatische Einkaufsliste aus dem Menüplan: nicht gebaut, Rezepte sind freier Text ohne Mengenliste.
+
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
 - **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy Leiste fest unten. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
