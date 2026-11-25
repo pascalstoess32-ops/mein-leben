@@ -255,6 +255,36 @@ textarea.pfi{min-height:0;resize:vertical}
 /* Navigation v9: 5 Bereiche + Unterreiter. Handy: Leiste unten */
 .navin{flex-direction:column;gap:8px;overflow:visible}
 .hero-card[hidden]{display:none}
+/* Kompakt v10: kleinere Schrift, weniger Luft */
+body{font-size:13.5px}
+.card{padding:12px 14px;margin-bottom:12px;border-radius:14px}
+.grid,.cols{gap:12px;column-gap:12px}
+.card h2{font-size:.92rem;margin-bottom:6px}
+.card h2 span{font-size:.74rem}
+.row{padding:6px 0;gap:8px}
+.row input[type=checkbox]{width:20px;height:20px;border-radius:6px}
+.add input,textarea,select.gi,.gi{padding:8px 10px;border-radius:10px}
+.add button{min-height:38px;border-radius:10px}
+.empty{font-size:.8rem}
+.big{font-size:1.3rem}
+.mr{font-size:.84rem;padding:3px 0}
+h1{font-size:clamp(1.2rem,3vw,1.7rem)}
+.eyebrow{font-size:.7rem}
+.hero{padding-block:10px 4px}
+.hero-card{margin-top:8px;padding:10px 14px;border-radius:16px;gap:12px}
+#arc{max-width:260px}
+.pace{font-size:.92rem}
+.pill{padding:5px 9px;border-radius:10px;min-width:0}
+.pill small{font-size:.62rem}.pill b{font-size:.88rem}
+.btn{min-height:40px;padding:0 12px;font-size:.84rem;border-radius:10px}
+.ev{padding:7px 0;gap:10px}.ev .tm{width:56px;font-size:.76rem}
+.ebtn{width:40px;height:40px}
+.ag-d{margin:10px 0 2px;font-size:.9rem}
+.kc{padding:10px}.ask input{min-height:42px}
+.sportbtn{padding:11px;font-size:.9rem}
+.wd i{height:28px}
+#fab{height:46px;font-size:.86rem}
+.focus svg{width:92px}.focus{gap:12px}.fz-time{font-size:22px}
 .areabar{display:flex;gap:4px;background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:4px;box-shadow:0 4px 16px -8px rgba(15,38,41,.35)}
 .areabar button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:0;background:transparent;border-radius:12px;font-weight:600;font-size:.86rem;color:var(--tx);cursor:pointer}
 .areabar button svg{width:20px;height:20px;flex:none}
@@ -596,7 +626,7 @@ A.pc=A.pc||[];(B.pc||[]).forEach(function(c){var a=A.pc.filter(function(x){retur
 A.pr=A.pr||[];(B.pr||[]).forEach(function(q){var a=A.pr.filter(function(x){return x.id===q.id})[0];if(!a){A.pr.push(JSON.parse(JSON.stringify(q)));n++}else{if((q.ts||0)>(a.ts||0)){a.t=q.t;a.b=q.b;a.c=q.c;a.f=q.f;a.ts=q.ts}a.u=Math.max(a.u||0,q.u||0);a.lu=Math.max(a.lu||0,q.lu||0)}});return n}
 /* ---------- Sicherung ---------- */
 var BXC=0;
-function bakc(h){var hasBak=false;try{hasBak=!!localStorage.getItem(KEY+'-bak')}catch(e){}h+='</h2><div class="empty">Deine Daten liegen in diesem Browser und werden automatisch mit deinem Konto synchronisiert. Eine Sicherung als Text schützt zusätzlich.</div><div class="add"><button data-bx="copy" style="flex:1;font-size:.95rem">Sicherung kopieren</button>'+(hasBak?'<button data-bx="undo" class="ghost" style="font-size:.9rem">Stand vor letztem Sync</button>':'')+'</div><textarea id="bx-out" readonly hidden style="min-height:90px;margin-top:8px;font-size:.75rem"></textarea><div class="empty" style="margin-top:12px">Sicherung aus dem anderen Dashboard hier einfügen. <b>Zusammenführen</b> behält alles, was hier schon steht, und ergänzt nur Neues. <b>Ersetzen</b> überschreibt alles.</div><textarea id="bx-in" style="min-height:80px;font-size:.8rem" placeholder="{&quot;l&quot;: …}"></textarea><div class="add"><button data-bx="mrg" style="flex:2;font-size:.95rem">Zusammenführen</button><button data-bx="imp" style="flex:1;font-size:.9rem;background:var(--neg)">Ersetzen</button></div><div id="bx-msg" class="empty"></div><div class="empty" style="margin-top:10px">App-Version 18 (Leiste fest unten, kleinere Schrift)</div></div>';return h}
+function bakc(h){var hasBak=false;try{hasBak=!!localStorage.getItem(KEY+'-bak')}catch(e){}h+='</h2><div class="empty">Deine Daten liegen in diesem Browser und werden automatisch mit deinem Konto synchronisiert. Eine Sicherung als Text schützt zusätzlich.</div><div class="add"><button data-bx="copy" style="flex:1;font-size:.95rem">Sicherung kopieren</button>'+(hasBak?'<button data-bx="undo" class="ghost" style="font-size:.9rem">Stand vor letztem Sync</button>':'')+'</div><textarea id="bx-out" readonly hidden style="min-height:90px;margin-top:8px;font-size:.75rem"></textarea><div class="empty" style="margin-top:12px">Sicherung aus dem anderen Dashboard hier einfügen. <b>Zusammenführen</b> behält alles, was hier schon steht, und ergänzt nur Neues. <b>Ersetzen</b> überschreibt alles.</div><textarea id="bx-in" style="min-height:80px;font-size:.8rem" placeholder="{&quot;l&quot;: …}"></textarea><div class="add"><button data-bx="mrg" style="flex:2;font-size:.95rem">Zusammenführen</button><button data-bx="imp" style="flex:1;font-size:.9rem;background:var(--neg)">Ersetzen</button></div><div id="bx-msg" class="empty"></div><div class="empty" style="margin-top:10px">App-Version 19 (kompakter)</div></div>';return h}
 function bx(a,btn){var msg=g('bx-msg');if(a==='copy'){var j=JSON.stringify(S),out=g('bx-out');out.value=j;out.hidden=false;var ok=function(){toast('Sicherung in die Zwischenablage kopiert')},fb=function(){out.focus();out.select();msg.textContent='Kopieren nicht erlaubt. Der Text ist markiert, kopiere ihn manuell.'};try{navigator.clipboard.writeText(j).then(ok,fb)}catch(e){fb()}return}
 if(a==='undo'){try{var b=JSON.parse(localStorage.getItem(KEY+'-bak'));if(b&&b.l){S=b;ens();fix();save();render();toast('Älterer Stand wiederhergestellt')}}catch(e){}return}
 if(a==='mrg'){var nb;try{nb=JSON.parse(g('bx-in').value)}catch(e){msg.textContent='Das ist kein gültiger Sicherungstext. Füge den kompletten Text ein, der mit { beginnt.';return}if(!nb||!nb.l){msg.textContent='In diesem Text stecken keine Dashboard-Daten.';return}try{localStorage.setItem(KEY+'-bak',JSON.stringify(S))}catch(e){}var cnt=mergeState(S,nb);ens();fix();save();render();confetti(80);toast(cnt?cnt+' neue Einträge übernommen':'Zusammengeführt, nichts Neues gefunden');return}
