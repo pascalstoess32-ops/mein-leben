@@ -16,7 +16,7 @@ Zwei Versionen derselben App:
 - Dashboard: diese Datei mit dem Artifact-Tool auf die Dashboard-URL veröffentlichen (Link im Second Brain).
 - App: `python3 ~/Claude-Projekte/mein-leben-dashboard/build_pwa.py ~/Claude-Projekte/mein-leben-dashboard/dashboard.html index.html <Version> "<Notiz>"`, dann `VERSION` in `sw.js` erhöhen, committen, pushen. Das Skript tauscht den Kopf, entfernt Konto-Sync und `/*SEED*/`, bricht bei Kundennamen ab.
 - Stolperstein: Klassennamen vor Neuvergabe suchen (`.gbar` war schon der Zielbalken und hat die Navigation auf 10 px gequetscht). Optik prüfen mit Chrome headless: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --window-size=500,700 --user-data-dir=<tmp> --screenshot=<png> file://<html>` (mind. 500 px breit, auf Datei warten, Prozess danach beenden).
-- Leiste mit den Bereichen: am Handy fest unten (Klasse `.areabar`), am Mac oben; Unterreiter oben. Der frühere „Leiste unsichtbar“-Fehler war die Namenskollision, nicht die feste Position.
+- Leiste mit den Bereichen: am Handy fest unten (Klasse `.areabar`) mit „Erfassen“ als 5. Knopf (`.capb`), schwebender Knopf `#fab` nur am Mac (verdeckte am Handy Knöpfe darunter); Unterreiter oben. Der frühere „Leiste unsichtbar“-Fehler war die Namenskollision, nicht die feste Position.
 
 ## Aufbau seit 2026-11-25 (App-Version 20)
 - Bereiche: Start (Übersicht = Frag Claude, Nächste 7 Tage, Kunden; Unterreiter Auswertung = alle Diagramme), Heute (nur Abhaken), Kalender, Arbeit (Planung, Business, Content, Prompts, Kurse), Leben (Körper inkl. Einkauf, Geld, Zuhause, Ich inkl. Menschen und Notizen).
