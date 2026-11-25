@@ -22,10 +22,10 @@ Zwei Versionen derselben App:
 - Bereiche: Start (Übersicht = Frag Claude, Nächste 7 Tage, Kunden; Unterreiter Auswertung = alle Diagramme), Heute (nur Abhaken), Kalender, Arbeit (Planung, Business, Content, Prompts, Kurse), Leben (Körper inkl. Einkauf, Geld, Zuhause, Ich inkl. Menschen und Notizen).
 - Alte Reiter Einkauf/Menschen/Notizen (Index 6/10/12) bleiben als leere Einträge, `MERGE` leitet sie um; eigene Karten dieser Reiter erscheinen im Zielreiter.
 - Einmal-Migration `S.v10`: blendet Diese Woche/Projekte/Kunden & Akquise aus, im Dashboard auch Geburtstage und Termine & Fristen, Zuhause→Einkauf nur wenn leer. Nichts gelöscht, zurückholen über „Karten bearbeiten“.
-- Listenzeilen (`.row.q`): Unteraufgaben, Mo–Fr und Löschen erst bei Hover bzw. nach Tippen auf „⋯“.
+- Listenzeilen (`.row.q`): feste Knöpfe (Unteraufgaben nur wenn vorhanden, Mo–Fr, ×), nichts erscheint beim Antippen – sonst rutscht × unter den Finger und löscht. Verschieben: Datum wählen → `fx` (fester Tag) + `sk` (heute übersprungen).
 
 ## Körper seit App-Version 22 (2026-11-25)
-- **Training heute** (`train`): Tag aus dem Sport-Plan (Mo/Di/Do/Fr, Titel beginnt mit „Mo ·“ usw.), Woche im 4-Wochen-Block ab `S.blk` (Start 2026-11-19), Hinweis aus „Steigerung über 4 Wochen“. Haken nur zur Übersicht (`S.trn`), Gewicht nur per „Eintragen“ in den Verlauf.
+- **Training heute** (`train`, seit Version 23 nicht mehr angezeigt, Code bleibt): Tag aus dem Sport-Plan (Mo/Di/Do/Fr, Titel beginnt mit „Mo ·“ usw.), Woche im 4-Wochen-Block ab `S.blk` (Start 2026-11-19), Hinweis aus „Steigerung über 4 Wochen“. Haken nur zur Übersicht (`S.trn`), Gewicht nur per „Eintragen“ in den Verlauf.
 - **„Heute trainiert“ zählt nur per Antippen** (`S.sp`), Übungseinträge zählen nicht mehr automatisch (Migration `S.v11` übernimmt alte Tage).
 - **Einkaufsliste**: Abschnitte statt Unteraufgaben, Abgehaktes unten, neue Artikel per Stichwort in die Abteilung (`SHK`), „Neue Woche“ setzt Haken zurück.
 - **Menüplan**: Gericht antippen zeigt das passende Rezept aus „Rezepte“ (erstes Wort des Rezepttitels). „Menüplan bearbeiten“ zeigt die normale Liste.
