@@ -18,6 +18,12 @@ Zwei Versionen derselben App:
 - Stolperstein: Klassennamen vor Neuvergabe suchen (`.gbar` war schon der Zielbalken und hat die Navigation auf 10 px gequetscht). Optik prüfen mit Chrome headless: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --window-size=500,700 --user-data-dir=<tmp> --screenshot=<png> file://<html>` (mind. 500 px breit, auf Datei warten, Prozess danach beenden).
 - Leiste mit den Bereichen: am Handy fest unten (Klasse `.areabar`), am Mac oben; Unterreiter oben. Der frühere „Leiste unsichtbar“-Fehler war die Namenskollision, nicht die feste Position.
 
+## Aufbau seit 2026-11-25 (App-Version 20)
+- Bereiche: Start (Übersicht = Frag Claude, Nächste 7 Tage, Kunden; Unterreiter Auswertung = alle Diagramme), Heute (nur Abhaken), Kalender, Arbeit (Planung, Business, Content, Prompts, Kurse), Leben (Körper inkl. Einkauf, Geld, Zuhause, Ich inkl. Menschen und Notizen).
+- Alte Reiter Einkauf/Menschen/Notizen (Index 6/10/12) bleiben als leere Einträge, `MERGE` leitet sie um; eigene Karten dieser Reiter erscheinen im Zielreiter.
+- Einmal-Migration `S.v10`: blendet Diese Woche/Projekte/Kunden & Akquise aus, im Dashboard auch Geburtstage und Termine & Fristen, Zuhause→Einkauf nur wenn leer. Nichts gelöscht, zurückholen über „Karten bearbeiten“.
+- Listenzeilen (`.row.q`): Unteraufgaben, Mo–Fr und Löschen erst bei Hover bzw. nach Tippen auf „⋯“.
+
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
 - **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy Leiste fest unten. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
