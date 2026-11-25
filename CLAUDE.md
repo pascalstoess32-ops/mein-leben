@@ -19,7 +19,7 @@ Zwei Versionen derselben App:
 - Leiste mit den Bereichen steht oben (unten fixiert funktioniert im claude.ai-Rahmen nicht).
 
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
-- **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy als Leiste unten. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
+- **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, Leiste oben. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
 - **Frag Claude** (Fähigkeit `sample`) auf Start: liest Termine, Top 3, Planer und Pipeline; darf Termine anlegen und ändern, aber nicht löschen.
 - **Kunden-Pipeline:** neue Felder `n` (nächster Schritt) und `o` (offener Betrag), Karte „Kunden“ auf Start.
