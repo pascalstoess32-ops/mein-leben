@@ -11,6 +11,13 @@ Zwei Versionen derselben App:
 - Das Repo ist öffentlich: keine Einträge, persönlichen Daten oder Links zum Artifact hier ablegen.
 - Wochenende: Sport zählt Sa/So nicht in die Tageswertung (Bonus); der Aufgabenplaner verteilt keine Arbeit aufs Wochenende.
 
+## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
+- **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy als Leiste unten. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
+- **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
+- **Frag Claude** (Fähigkeit `sample`) auf Start: liest Termine, Top 3, Planer und Pipeline; darf Termine anlegen und ändern, aber nicht löschen.
+- **Kunden-Pipeline:** neue Felder `n` (nächster Schritt) und `o` (offener Betrag), Karte „Kunden“ auf Start.
+- In der PWA nicht möglich (kein Connector, kein Claude). Navigation und Kunden-Felder ließen sich übertragen.
+
 ## Funktionen (Stand: App-Version 8, 2026-11-19)
 - **Heute:** Tagesbogen 7–22 Uhr, Erledigt-Quote, Routine, Top 3, Gewohnheiten (Schalter „Mo–Fr“), Fokus-Timer, Energie
 - **Aufgabenplaner:** Start, Deadline, Arbeitstage und Stunden werden auf Werktage verteilt (Kapazität 5 h pro Tag); wiederkehrende Aufgaben

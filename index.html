@@ -70,7 +70,6 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color
 .navin::-webkit-scrollbar{display:none}
 .navin button{flex:none;border:1px solid var(--bd);background:var(--card);border-radius:999px;padding:8px 14px;font-size:.88rem;font-weight:500;cursor:pointer;transition:background .15s,border-color .15s}
 .navin button:hover{border-color:var(--ac)}
-.navin button .ic{margin-right:6px}
 .navin button.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
 
 /* Main */
@@ -252,18 +251,76 @@ textarea.pfi{min-height:0;resize:vertical}
 #toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:.88rem;font-weight:500;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:calc(100% - 32px)}
 #toast.on{opacity:1;transform:translateX(-50%)}
 #fx{position:fixed;inset:0;pointer-events:none;z-index:70;width:100%;height:100%}
-@media (max-width:760px){
-nav{position:fixed;top:auto;bottom:0;left:0;right:0;border-top:1px solid var(--bd);background:color-mix(in srgb,var(--card) 90%,transparent)}
-.navin{padding-block:8px calc(8px + env(safe-area-inset-bottom,0px));gap:4px}
-.navin button{border:0;background:transparent;padding:6px 10px;font-size:.78rem;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px}
-.navin button .ic{font-size:1.25rem;line-height:1;margin:0}
-.navin button.on{background:var(--hi);color:var(--tx);border:0}
-main{padding-bottom:calc(150px + env(safe-area-inset-bottom,0px))}
-#fab{bottom:calc(84px + env(safe-area-inset-bottom,0px));height:52px}
-#toast{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
-}
-@media (display-mode:standalone){.hero{padding-top:8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Navigation v9: 5 Bereiche + Unterreiter. Handy: Leiste unten */
+.navin{flex-direction:column;gap:8px;overflow:visible}
+.gbar{display:flex;gap:4px;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:4px}
+.gbar button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:0;background:transparent;border-radius:12px;font-weight:600;font-size:.92rem;color:var(--mu);cursor:pointer}
+.gbar button svg{width:20px;height:20px;flex:none}
+.gbar button:hover{color:var(--tx);background:var(--hi)}
+.gbar button.on{background:var(--tx);color:var(--bg)}
+.sbar{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.sbar::-webkit-scrollbar{display:none}
+.sbar button{flex:none;border:1px solid var(--bd);background:var(--card);border-radius:999px;padding:8px 14px;min-height:40px;font-size:.88rem;font-weight:500;cursor:pointer}
+.sbar button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (max-width:760px){
+.gbar{position:fixed;left:0;right:0;bottom:0;z-index:45;border-radius:0;border-width:1px 0 0;padding:6px max(8px,env(safe-area-inset-left,0px)) calc(6px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.gbar button{flex-direction:column;gap:2px;font-size:.68rem;min-height:52px;padding:4px 0}
+.gbar button.on{background:var(--hi);color:var(--ac)}
+.navin{gap:0}
+.navin .sbar{padding-bottom:2px}
+main{padding-bottom:170px}
+#fab{bottom:calc(84px + env(safe-area-inset-bottom,0px));height:52px;padding:0 16px}
+#toast{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+.hero{padding-block:12px 4px}.hero-card{padding:10px 14px 12px}
+}
+.card{box-shadow:0 1px 2px rgba(15,38,41,.04)}
+/* Kalender + Cockpit */
+.ag-d{display:flex;align-items:baseline;gap:8px;margin:16px 0 4px;font-weight:700;font-family:var(--fd)}
+.ag-d:first-of-type{margin-top:4px}
+.ag-d small{font-family:var(--fb);font-weight:500;color:var(--mu);font-size:.8rem}
+.ag-d.td{color:var(--ac)}
+.ev{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--bd)}
+.ev .tm{width:64px;flex:none;font-size:.82rem;color:var(--mu);font-variant-numeric:tabular-nums}
+.ev .ti{flex:1;min-width:0;word-break:break-word}
+.ev .ti small{display:block;color:var(--mu);font-size:.8rem;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.03em;padding:2px 7px;border-radius:6px;margin-right:6px;vertical-align:1px}
+.tag.bd{background:color-mix(in srgb,#b04aab 16%,var(--card));color:#9a3a95}
+.tag.dl{background:color-mix(in srgb,var(--sun) 18%,var(--card));color:#a8431c}
+.tag.pay{background:color-mix(in srgb,#d9a400 20%,var(--card));color:#7a5c00}
+.tag.ev{background:color-mix(in srgb,var(--ac) 14%,var(--card));color:var(--ac2)}
+:root[data-theme="dark"] .tag.bd{color:#e6a3e2}:root[data-theme="dark"] .tag.dl{color:#ffb08f}:root[data-theme="dark"] .tag.pay{color:#f1cf6a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.bd{color:#e6a3e2}:root:not([data-theme="light"]) .tag.dl{color:#ffb08f}:root:not([data-theme="light"]) .tag.pay{color:#f1cf6a}}
+.ebtn{width:44px;height:44px;flex:none;border:1px solid var(--bd);background:var(--card);border-radius:12px;cursor:pointer;display:grid;place-items:center;color:var(--tx)}
+.ebtn:hover{border-color:var(--ac)}
+.ebtn svg{width:18px;height:18px}
+.evf{background:var(--hi);border:1px solid var(--ac);border-radius:14px;padding:12px;margin:8px 0;display:grid;gap:8px}
+.evf label{font-size:.78rem;color:var(--mu);font-weight:600}
+.evf input,.evf textarea{width:100%;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;min-height:44px}
+.evf textarea{min-height:70px}
+.evf .r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.evf .r>div{display:grid;gap:4px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--bd);background:var(--card);font-weight:600;cursor:pointer}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#fff}
+.btn.w{background:var(--neg);border-color:var(--neg);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.note{border-radius:12px;padding:10px 12px;background:var(--hi);border:1px solid var(--bd);font-size:.88rem;margin:6px 0}
+.note.err{border-color:color-mix(in srgb,var(--neg) 45%,var(--bd));background:color-mix(in srgb,var(--neg) 8%,var(--card))}
+.ask{display:flex;gap:8px;align-items:center}
+.ask input{flex:1;min-width:0;min-height:48px;background:var(--hi);border:1px solid var(--bd);border-radius:14px;padding:0 14px}
+.ask input:focus{border-color:var(--ac);outline:none}
+.ans{white-space:pre-wrap;line-height:1.5;margin-top:10px;font-size:.94rem}
+.ans:empty{display:none}
+.kd{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:10px}
+.kc{border:1px solid var(--bd);border-radius:14px;padding:12px;display:grid;gap:4px;background:var(--hi)}
+.kc b{font-family:var(--fd)}
+.kc .st{font-size:.72rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.05em}
+.kc .ns{font-size:.88rem}
+.kc .of{font-size:.82rem;color:#a8431c;font-weight:600}
+.pmeta{display:flex;gap:6px;flex:0 0 100%;flex-wrap:wrap;padding-left:2px}
+.pmeta input{flex:1 1 160px;min-width:0;background:var(--hi);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;font-size:.88rem}
+.pmeta input.o{flex:0 0 110px}
 </style>
 </head>
 <body>
@@ -302,7 +359,7 @@ var KEY='life-dash-v2',today=ld(new Date());
 // [id, Titel, Typ]
 var TABS=[
 ['📊 Übersicht',[['ov','','overview']]],
-['🌅 Heute',[['tplan','Heute geplant','tplan'],['sportday','Heute beim Sport?','sportday'],['focus','Fokus-Timer','focus'],['routine','Tagesroutine','daily'],['top3','Top 3 heute','daily'],['planer','Aufgabenplaner','plan'],['rec','Wiederkehrende Aufgaben','rec'],['termin','Termine & Fristen','dates'],['mood','Energie heute','mood']]],
+['🌅 Heute',[['gtoday','Termine heute & morgen','gtoday'],['tplan','Heute geplant','tplan'],['sportday','Heute beim Sport?','sportday'],['focus','Fokus-Timer','focus'],['routine','Tagesroutine','daily'],['top3','Top 3 heute','daily'],['planer','Aufgabenplaner','plan'],['rec','Wiederkehrende Aufgaben','rec'],['termin','Termine & Fristen','dates'],['mood','Energie heute','mood']]],
 ['🤖 Prompts',[['prompts','Prompts','prompts']]],
 ['💼 Business',[['umsatz','Umsatz','rev'],['pipe','Kunden-Pipeline','pipe'],['bweek','Diese Woche','list'],['bproj','Projekte','list'],['bkund','Kunden & Akquise','list'],['bidee','Business-Ideen','list']]],
 ['🎬 Content',[['cidee','Ideen','list'],['cwip','In Arbeit','list'],['cdone','Veröffentlicht','list'],['chook','Hooks & Sätze','list']]],
@@ -313,9 +370,17 @@ var TABS=[
 ['🧭 Ich',[['ziele','Ziele','goal'],['wins','Kleine Wins','list'],['lern','Lernen & Bücher','list'],['bucket','Bucket List','list'],['wheel','Lebensrad','wheel'],['wr','Wochenrückblick','review'],['reflex','Reflexion der Woche','text']]],
 ['👥 Menschen',[['leute','Melden bei …','list'],['geb','Geburtstage','list'],['plan','Gemeinsame Pläne','list']]],
 ['🎓 Kurse',[['ktheme','Themen, bei denen ich helfen kann','topic'],['kcap','Erkenntnisse & Ideen festhalten','cap'],['kwem','Wem helfe ich konkret?','text'],['kprob','Welches Problem löse ich für sie?','text'],['kweg','Mein Weg: Was habe ich selbst gelernt?','text'],['kmod','Kursaufbau (Module)','list'],['kfrag','Fragen, die mir Menschen stellen','list']]],
-['📝 Notizen',[['n1','Freie Notizen','text'],['backup','Sicherung & Daten','backup']]]
+['📝 Notizen',[['n1','Freie Notizen','text'],['backup','Sicherung & Daten','backup']]],
+['📅 Kalender',[['gcal','Kalender','gcal']]]
 ];
-var SL=['uebersicht','heute','prompts','business','content','koerper','einkauf','geld','zuhause','ich','menschen','kurse','notizen'];
+var SL=['uebersicht','heute','prompts','business','content','koerper','einkauf','geld','zuhause','ich','menschen','kurse','notizen','kalender'];
+// Bereiche der Navigation: [Name, Icon, Reiter-Indizes]
+var GROUPS=[['Start','home',[0]],['Heute','sun',[1]],['Kalender','cal',[13]],['Arbeit','brief',[3,4,2,11]],['Leben','leaf',[5,6,7,8,9,10,12]]];
+var ICO={home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',brief:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/>',leaf:'<path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19l7-7"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16v4z"/>',ref:'<path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/>'};
+function ico(n){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICO[n]+'</svg>'}
+var NOCLAUDE=typeof claude==='undefined';if(NOCLAUDE)GROUPS.splice(2,1);
+function grpOf(k){for(var i=0;i<GROUPS.length;i++)if(GROUPS[i][2].indexOf(k)>-1)return i;return 0}
+function solo(ti){var t=TABS[ti][1][0][2];return ti===0||t==='prompts'||t==='gcal'}
 var DEF={
 ktheme:['Nervensystem & Regulation','Einklang im Alltag','Raus aus dem Dauerstress'],
 routine:['Strandspaziergang mit den Hunden','Arbeitsstart 10 Uhr','Zweite Hunderunde','Sport 18 Uhr'],
@@ -381,7 +446,7 @@ function save(){S.ts=Date.now();lsave();push()}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function eur(n){return n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function eur0(n){return n.toLocaleString('de-DE',{maximumFractionDigits:0})}
-function sec(s){if(s[2]==='overview')return ov();if(s[2]==='prompts')return prc();
+function sec(s){if(s[2]==='overview')return ov();if(s[2]==='prompts')return prc();if(s[2]==='gcal')return gcalc();if(s[2]==='gtoday')return gtodc();
 var id=s[0],ty=s[2],h='<div class="card" id="c-'+id+'"><h2>'+s[1];
 if(ty==='mood'){
 var m=S.m[today]||0;
@@ -420,7 +485,7 @@ for(var w=0;w<W;w++){var d0=addd(start,w*7),mo=+d0.slice(5,7)-1;if(mo!==lm&&w-lw
 for(var r=0;r<7;r++){var d=addd(start,w*7+r);if(d>today)continue;var v=S.h[d],c=v==null||v===0?0:v<34?1:v<67?2:v<100?3:4;s+='<rect class="h'+c+(d===today?' ':'')+'" x="'+(ox+w*(cs+gp2))+'" y="'+(oy+r*(cs+gp2))+'" width="'+cs+'" height="'+cs+'" rx="3.5"><title>'+dfmt(d)+': '+(v==null?'keine Daten':v+' %')+'</title></rect>';if(d===today)s+='<rect class="hx" x="'+(ox+w*(cs+gp2)-1.5)+'" y="'+(oy+r*(cs+gp2)-1.5)+'" width="'+(cs+3)+'" height="'+(cs+3)+'" rx="4.5"/>'}}
 return '<div class="scroll-x">'+s+'</svg></div><div class="legend">weniger '+[0,1,2,3,4].map(function(c){return '<svg viewBox="0 0 14 14"><rect class="h'+c+'" x="0" y="0" width="14" height="14" rx="3.5"/></svg>'}).join('')+' 100 %</div>'}
 function ov(){var ds=days(14),st=dayStats(),dn=st.dn,tot=st.tot,p=st.p,hv=ds.map(function(d){return(S.h&&S.h[d])||0}),mv=ds.map(function(d){return S.m[d]||0}),fm=ds.map(function(d){return(S.foc&&S.foc[d])||0});var inc=0,ex=0,fx=0;S.l.ledger.forEach(function(i){if(i.a>0)inc+=i.a;else ex-=i.a||0});var ur=0;S.l.umsatz.forEach(function(i){if(nm(i.m)===today.slice(0,7))ur+=i.a});S.l.umsatz.forEach(function(i){if(nm(i.m)===today.slice(0,7))inc+=i.a||0});S.l.fix.forEach(function(i){fx+=Math.abs(i.a||0)});var mx=Math.max(inc,ur,ex,fx,1);
-var h='<div class="grid"><div class="card"><h2>Heute<span>'+dn+' von '+tot+'</span></h2><div class="ring"><svg viewBox="0 0 100 100"><g transform="rotate(-90 50 50)"><circle class="rg" cx="50" cy="50" r="40"/><circle class="rf" cx="50" cy="50" r="40" stroke-dasharray="'+(2.513*p)+' 251.3"/></g><text x="50" y="57" class="tl" style="font-size:20px;font-weight:700;fill:var(--tx)">'+p+'%</text></svg><div><div class="big">'+dn+' / '+tot+'</div><div class="empty">Routine, Gewohnheiten, Top 3 und wiederkehrende Aufgaben</div></div></div></div>';
+var h='<div class="grid">'+askc()+nextc()+kundc()+'<div class="card"><h2>Heute<span>'+dn+' von '+tot+'</span></h2><div class="ring"><svg viewBox="0 0 100 100"><g transform="rotate(-90 50 50)"><circle class="rg" cx="50" cy="50" r="40"/><circle class="rf" cx="50" cy="50" r="40" stroke-dasharray="'+(2.513*p)+' 251.3"/></g><text x="50" y="57" class="tl" style="font-size:20px;font-weight:700;fill:var(--tx)">'+p+'%</text></svg><div><div class="big">'+dn+' / '+tot+'</div><div class="empty">Routine, Gewohnheiten, Top 3 und wiederkehrende Aufgaben</div></div></div></div>';
 var mm=money();h+='<div class="card"><h2>Frei verfügbar<span>heute</span></h2><div class="big" style="color:'+(mm.free<0?'var(--neg)':'var(--ac)')+'">'+eur(mm.free)+' €</div><div class="empty">Kontostand '+eur(mm.bal)+' € abzüglich geplanter Ausgaben '+eur(mm.fut)+' €</div><div class="empty">Mit erwarteten Einnahmen ('+eur(mm.fi)+' €): <b>'+eur(mm.free+mm.fi)+' €</b></div>'+(S.goal?'<div class="empty">Ziel '+eur0(S.goal)+' €: <b>'+Math.max(0,Math.round((mm.free+mm.fi)/S.goal*100))+' %</b></div>':'')+'</div>';
 h+='<div class="card w"><h2>Deine Tage<span>Serie '+streak()+' Tage · Rekord '+best()+' · Ø 14 Tage '+Math.round(avg(hv))+' %</span></h2>'+heat()+'<div class="empty">Ein Tag zählt für die Serie, wenn du mindestens 80 % erledigt hast.</div></div>';
 var tw=sportWeek(),tn=tw.slice(0,5).filter(trained).length,twe=tw.slice(5).filter(trained).length,GX=exGroups(),prog=Object.keys(GX).map(function(n){var E=GX[n];return[n,(E[E.length-1][0].w||0)-(E[0][0].w||0),E[0][0].w||0,E[E.length-1][0].w||0]}).filter(function(x){return x[1]>0}).sort(function(a,b){return b[1]-a[1]}).slice(0,3);
@@ -431,8 +496,6 @@ h+='<div class="card"><h2>Geld</h2>'+mr('Umsatz',ur,mx,'')+mr('Einnahmen',inc,mx
 h+='<div class="card"><h2>Ziele<span>Ø '+gp('ziele')+'%</span></h2>'+(S.l.ziele.length?grow('ziele'):'<div class="empty">Noch keine Ziele</div>')+'</div>';if(S.l.spar.length)h+='<div class="card"><h2>Sparziele</h2>'+grow('spar')+'</div>';var mn=[],ml=[],M=['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];for(var q=5;q>=0;q--){var dd=new Date();dd.setDate(1);dd.setMonth(dd.getMonth()-q);mn.push(ld(dd).slice(0,7));ml.push(M[dd.getMonth()])}
 var r2=mn.map(function(m){return S.l.umsatz.reduce(function(s,i){return s+(nm(i.m)===m?(i.a||0):0)},0)});
 h+='<div class="card"><h2>Umsatz, 6 Monate<span>'+eur(r2[5])+' € aktuell</span></h2>'+bars(r2,Math.max.apply(null,r2.concat([1])),mn,ml)+'</div>';
-var up=S.l.termin.filter(function(i){return i.dt>=today}).sort(function(a,b){return a.dt<b.dt?-1:1}).slice(0,4);
-h+='<div class="card"><h2>Nächste Termine</h2>'+(up.length?up.map(function(i){var df=Math.round((new Date(i.dt+'T12:00')-new Date(today+'T12:00'))/864e5);return '<div class="mr" style="grid-template-columns:1fr auto"><span>'+esc(i.t)+'</span><b style="color:'+(df<=1?'var(--sun)':'inherit')+'">'+(df===0?'heute':df===1?'morgen':dfmt(i.dt))+'</b></div>'}).join(''):'<div class="empty">Keine anstehenden Termine</div>')+'</div>';
 h+='<div class="card"><h2>Lebensrad</h2>'+wsvg()+'</div>';return h+'</div>'}
 var NEW={umsatz:1,pipe:1,log:1,termin:1,planer:1,rec:1},ST=['Anfrage','Gespräch','Angebot','Kunde'],AR=['Business','Geld','Körper','Ruhe','Menschen','Zuhause','Freizeit','Wachstum'],Q=['Was lief gut?','Was war schwer?','Was lasse ich los?','Fokus nächste Woche'];
 function g(x){return document.getElementById(x)}
@@ -446,7 +509,7 @@ if(id==='rec'){var dm=parseInt(g('dm-rec').value)||0;if(dm<1||dm>31)dm=0;if(!dm&
 if(id==='planer'){o.dl=g('dl-planer').value;if(!o.dl)return;o.n=Math.max(1,parseInt(g('nd-planer').value)||1);o.h=parseFloat(g('hh-planer').value.replace(',','.'))||1;o.st=g('st-planer').value||today;o.dn=[]}
 S.l[id].push(o);save();render();var f=g('in-'+id);if(f)f.focus()}
 function revc(h,it){var mo=today.slice(0,7),by={},tot=0;it.forEach(function(i){if(nm(i.m)===mo){by[i.t]=(by[i.t]||0)+i.a;tot+=i.a}});h+='<span>'+eur(tot)+' € diesen Monat</span></h2>';var mx=Math.max.apply(null,Object.keys(by).map(function(k){return by[k]}).concat([1]));Object.keys(by).forEach(function(k){h+=mr(esc(k),by[k],mx,'')});if(it.length)h+='<div class="empty" style="margin-top:6px">Letzte Einträge</div>';for(var k=it.length-1;k>=Math.max(0,it.length-5);k--){var i=it[k];h+='<div class="row f"><span class="t">'+esc(i.t)+' · '+i.m+'</span><span class="a">'+eur(i.a)+' €</span><button data-s="umsatz" data-x="'+k+'" aria-label="Löschen">×</button></div>'}return h+'<div class="add"><input id="in-umsatz" placeholder="Business"><input class="am" id="am-umsatz" inputmode="decimal" placeholder="€"><button data-a="umsatz">+</button></div><div class="add"><input id="mo-umsatz" type="month" value="'+mo+'"></div></div>'}
-function pipec(h,it){h+='<span>'+it.length+'</span></h2><div class="mr" style="grid-template-columns:repeat(4,1fr);text-align:center">'+ST.map(function(s,k){return '<div><b style="text-align:center;display:block;font-size:1.3rem;font-family:var(--fd)">'+it.filter(function(i){return i.s===k}).length+'</b><div class="empty">'+s+'</div></div>'}).join('')+'</div>';it.forEach(function(i,k){h+='<div class="row"><span class="t">'+esc(i.t)+'</span><select class="gi" style="width:110px" data-p="'+k+'" aria-label="Phase">'+ST.map(function(s,j){return '<option value="'+j+'"'+(i.s===j?' selected':'')+'>'+s+'</option>'}).join('')+'</select><button data-s="pipe" data-x="'+k+'" aria-label="Löschen">×</button></div>'});return h+'<div class="add"><input id="in-pipe" placeholder="Name / Firma"><button data-a="pipe">+</button></div></div>'}
+function pipec(h,it){h+='<span>'+it.length+'</span></h2><div class="mr" style="grid-template-columns:repeat(4,1fr);text-align:center">'+ST.map(function(s,k){return '<div><b style="text-align:center;display:block;font-size:1.3rem;font-family:var(--fd)">'+it.filter(function(i){return i.s===k}).length+'</b><div class="empty">'+s+'</div></div>'}).join('')+'</div>';it.forEach(function(i,k){h+='<div class="row" style="flex-wrap:wrap"><span class="t">'+esc(i.t)+'</span><select class="gi" style="width:110px" data-p="'+k+'" aria-label="Phase">'+ST.map(function(s,j){return '<option value="'+j+'"'+(i.s===j?' selected':'')+'>'+s+'</option>'}).join('')+'</select><button data-s="pipe" data-x="'+k+'" aria-label="Löschen">×</button><div class="pmeta"><input data-pn="'+k+'" value="'+esc(i.n||'')+'" placeholder="Nächster Schritt" aria-label="Nächster Schritt für '+esc(i.t)+'"><input class="o" data-po="'+k+'" inputmode="decimal" value="'+(i.o?String(i.o).replace('.',','):'')+'" placeholder="Offen €" aria-label="Offener Betrag für '+esc(i.t)+'"></div></div>'});return h+'<div class="add"><input id="in-pipe" placeholder="Name / Firma"><button data-a="pipe">+</button></div></div>'}
 function kg(x){return(Math.round(x*100)/100).toString().replace('.',',')+' kg'}
 var EXN=[];
 function exGroups(){var g2={},it=S.l.log;it.forEach(function(e,k){(g2[e.t]=g2[e.t]||[]).push([e,k])});Object.keys(g2).forEach(function(n){g2[n].sort(function(a,b){return a[0].dt<b[0].dt?-1:a[0].dt>b[0].dt?1:a[1]-b[1]})});return g2}
@@ -530,7 +593,7 @@ A.pc=A.pc||[];(B.pc||[]).forEach(function(c){var a=A.pc.filter(function(x){retur
 A.pr=A.pr||[];(B.pr||[]).forEach(function(q){var a=A.pr.filter(function(x){return x.id===q.id})[0];if(!a){A.pr.push(JSON.parse(JSON.stringify(q)));n++}else{if((q.ts||0)>(a.ts||0)){a.t=q.t;a.b=q.b;a.c=q.c;a.f=q.f;a.ts=q.ts}a.u=Math.max(a.u||0,q.u||0);a.lu=Math.max(a.lu||0,q.lu||0)}});return n}
 /* ---------- Sicherung ---------- */
 var BXC=0;
-function bakc(h){var hasBak=false;try{hasBak=!!localStorage.getItem(KEY+'-bak')}catch(e){}h+='</h2><div class="empty">Deine Daten liegen in diesem Browser und werden automatisch mit deinem Konto synchronisiert. Eine Sicherung als Text schützt zusätzlich.</div><div class="add"><button data-bx="copy" style="flex:1;font-size:.95rem">Sicherung kopieren</button>'+(hasBak?'<button data-bx="undo" class="ghost" style="font-size:.9rem">Stand vor letztem Sync</button>':'')+'</div><textarea id="bx-out" readonly hidden style="min-height:90px;margin-top:8px;font-size:.75rem"></textarea><div class="empty" style="margin-top:12px">Sicherung aus dem anderen Dashboard hier einfügen. <b>Zusammenführen</b> behält alles, was hier schon steht, und ergänzt nur Neues. <b>Ersetzen</b> überschreibt alles.</div><textarea id="bx-in" style="min-height:80px;font-size:.8rem" placeholder="{&quot;l&quot;: …}"></textarea><div class="add"><button data-bx="mrg" style="flex:2;font-size:.95rem">Zusammenführen</button><button data-bx="imp" style="flex:1;font-size:.9rem;background:var(--neg)">Ersetzen</button></div><div id="bx-msg" class="empty"></div><div class="empty" style="margin-top:10px">App-Version 9 (Trainings- und Menüplan, Einkauf)</div></div>';return h}
+function bakc(h){var hasBak=false;try{hasBak=!!localStorage.getItem(KEY+'-bak')}catch(e){}h+='</h2><div class="empty">Deine Daten liegen in diesem Browser und werden automatisch mit deinem Konto synchronisiert. Eine Sicherung als Text schützt zusätzlich.</div><div class="add"><button data-bx="copy" style="flex:1;font-size:.95rem">Sicherung kopieren</button>'+(hasBak?'<button data-bx="undo" class="ghost" style="font-size:.9rem">Stand vor letztem Sync</button>':'')+'</div><textarea id="bx-out" readonly hidden style="min-height:90px;margin-top:8px;font-size:.75rem"></textarea><div class="empty" style="margin-top:12px">Sicherung aus dem anderen Dashboard hier einfügen. <b>Zusammenführen</b> behält alles, was hier schon steht, und ergänzt nur Neues. <b>Ersetzen</b> überschreibt alles.</div><textarea id="bx-in" style="min-height:80px;font-size:.8rem" placeholder="{&quot;l&quot;: …}"></textarea><div class="add"><button data-bx="mrg" style="flex:2;font-size:.95rem">Zusammenführen</button><button data-bx="imp" style="flex:1;font-size:.9rem;background:var(--neg)">Ersetzen</button></div><div id="bx-msg" class="empty"></div><div class="empty" style="margin-top:10px">App-Version 10 (neue Navigation, Kunden mit nächstem Schritt)</div></div>';return h}
 function bx(a,btn){var msg=g('bx-msg');if(a==='copy'){var j=JSON.stringify(S),out=g('bx-out');out.value=j;out.hidden=false;var ok=function(){toast('Sicherung in die Zwischenablage kopiert')},fb=function(){out.focus();out.select();msg.textContent='Kopieren nicht erlaubt. Der Text ist markiert, kopiere ihn manuell.'};try{navigator.clipboard.writeText(j).then(ok,fb)}catch(e){fb()}return}
 if(a==='undo'){try{var b=JSON.parse(localStorage.getItem(KEY+'-bak'));if(b&&b.l){S=b;ens();fix();save();render();toast('Älterer Stand wiederhergestellt')}}catch(e){}return}
 if(a==='mrg'){var nb;try{nb=JSON.parse(g('bx-in').value)}catch(e){msg.textContent='Das ist kein gültiger Sicherungstext. Füge den kompletten Text ein, der mit { beginnt.';return}if(!nb||!nb.l){msg.textContent='In diesem Text stecken keine Dashboard-Daten.';return}try{localStorage.setItem(KEY+'-bak',JSON.stringify(S))}catch(e){}var cnt=mergeState(S,nb);ens();fix();save();render();confetti(80);toast(cnt?cnt+' neue Einträge übernommen':'Zusammengeführt, nichts Neues gefunden');return}
@@ -558,16 +621,16 @@ g('pills').innerHTML='<div class="pill'+(sk>=3?' hot':'')+'"><small>Serie</small
 g('tp').style.width=st.p+'%';g('tt').textContent='Heute erledigt: '+st.dn+' von '+st.tot}
 
 /* ---------- Render ---------- */
-function navLabel(s){var i=s.indexOf(' ');return '<span class="ic" aria-hidden="true">'+s.slice(0,i)+'</span><span>'+s.slice(i+1)+'</span>'}
 var lastP=null;
 function render(){PC=plan();
-g('nav').innerHTML=TABS.map(function(t,k){return'<button data-t="'+k+'" class="'+(k===cur?'on':'')+'"'+(k===cur?' aria-current="page"':'')+'>'+navLabel(t[0])+'</button>'}).join('');
-var app=g('app');app.className='wrap'+(cur===0||TABS[cur][1][0][2]==='prompts'?'':' cols');app.innerHTML=tabBody(cur);
+var gi=grpOf(cur),gt=GROUPS[gi][2];
+g('nav').innerHTML='<div class="gbar" role="tablist" aria-label="Bereiche">'+GROUPS.map(function(G,i){return'<button data-g="'+i+'" class="'+(i===gi?'on':'')+'"'+(i===gi?' aria-current="page"':'')+'>'+ico(G[1])+'<span>'+G[0]+'</span></button>'}).join('')+'</div>'+(gt.length>1?'<div class="sbar">'+gt.map(function(k){return'<button data-t="'+k+'" class="'+(k===cur?'on':'')+'"'+(k===cur?' aria-current="page"':'')+'>'+TABS[k][0]+'</button>'}).join('')+'</div>':'');
+var app=g('app');app.className='wrap'+(solo(cur)?'':' cols');app.innerHTML=tabBody(cur);
 var st=dayStats();S.h=S.h||{};if(S.h[today]!==st.p){S.h[today]=st.p;lsave()}
-hero(st);var hc=document.querySelector('.hero-card');if(hc)hc.hidden=TABS[cur][1][0][2]==='prompts';
+hero(st);var hc=document.querySelector('.hero-card');if(hc)hc.hidden=cur>1;
 if(lastP!==null&&lastP<100&&st.p===100&&st.tot)confetti(160);lastP=st.p;if(typeof buildPT==='function'&&typeof psel!=='undefined')buildPT();
 }
-function go(k){if(!TABS[k])return;cur=k;EDT=false;CDEL=null;render();window.scrollTo({top:0});try{if(location.hash!=='#'+SL[k])location.hash=SL[k]}catch(e){}var b=document.querySelector('#nav .on');if(b&&b.scrollIntoView)b.scrollIntoView({inline:'center',block:'nearest'})}
+function go(k){if(!TABS[k])return;cur=k;if(typeof LASTT!=='undefined')LASTT[grpOf(k)]=k;EDT=false;CDEL=null;render();window.scrollTo({top:0});try{if(location.hash!=='#'+SL[k])location.hash=SL[k]}catch(e){}var b=document.querySelector('#nav .on');if(b&&b.scrollIntoView)b.scrollIntoView({inline:'center',block:'nearest'})}
 window.addEventListener('hashchange',function(){var k=SL.indexOf(location.hash.slice(1));if(k>-1&&k!==cur){cur=k;render()}});
 function add(id){if(id==='kcap'){var el=g('kc-text'),v=el.value.trim();if(!v)return;S.l.kcap.push({t:v,dt:today});save();render();toast('Festgehalten');return}if(NEW[id])return addn(id);
 var el=g('in-'+id),v=el.value.trim();if(!v)return;
@@ -585,7 +648,7 @@ else if(d.x!==undefined&&d.s){var gone=S.l[d.s].splice(+d.x,1)[0],ls=d.s,li=+d.x
 else if(d.a)add(d.a);
 else if(t.type==='checkbox'){S.l[d.s][+d.k].d=t.checked?1:0;save();render()}
 });
-app.addEventListener('change',function(e){var d=e.target.dataset;if(d.cn){var cc=S.cb.filter(function(x){return x.id===d.cn})[0],cv=e.target.value.trim();if(cc&&cv){cc.n=cv;save();render()}return}if(d.pce){var pc=pcat(d.pcid),v=e.target.value.trim();if(pc&&v){pc[d.pce]=v;save();render()}return}if(d.g){S.l[d.g][+d.k].c=parseFloat(e.target.value)||0;save();render()}if(d.p){S.l.pipe[+d.p].s=+e.target.value;save();render()}if(d.wh){S.wh[d.wh]=+e.target.value;save();render()}if(d.cap){S.cap=parseFloat(e.target.value)||5;save();render()}if(d.q!==undefined){S.l.ktheme[+d.q].s=+e.target.value;save();render()}});
+app.addEventListener('change',function(e){var d=e.target.dataset;if(d.cn){var cc=S.cb.filter(function(x){return x.id===d.cn})[0],cv=e.target.value.trim();if(cc&&cv){cc.n=cv;save();render()}return}if(d.pce){var pc=pcat(d.pcid),v=e.target.value.trim();if(pc&&v){pc[d.pce]=v;save();render()}return}if(d.g){S.l[d.g][+d.k].c=parseFloat(e.target.value)||0;save();render()}if(d.p){S.l.pipe[+d.p].s=+e.target.value;save();render()}if(d.pn!==undefined){S.l.pipe[+d.pn].n=e.target.value.trim();save();render()}if(d.po!==undefined){var pov=num(e.target.value);S.l.pipe[+d.po].o=isNaN(pov)?0:pov;save();render()}if(d.wh){S.wh[d.wh]=+e.target.value;save();render()}if(d.cap){S.cap=parseFloat(e.target.value)||5;save();render()}if(d.q!==undefined){S.l.ktheme[+d.q].s=+e.target.value;save();render()}});
 app.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id&&e.target.id.indexOf('in-')===0)add(e.target.id.slice(3))});
 app.addEventListener('input',function(e){if(e.target.dataset.w){S.w=S.w||{};var k=wk();S.w[k]=S.w[k]||[];S.w[k][+e.target.dataset.w]=e.target.value;save();return}if(e.target.dataset.x&&e.target.tagName==='TEXTAREA'){S.x[e.target.dataset.x]=e.target.value;save()}});
 
@@ -645,7 +708,7 @@ function goalAct(a){if(a==='edit'){GED=1;render();var f=g('gl');if(f){f.focus();
 
 /* ---------- Eigene Karten ---------- */
 var EDT=false,CDEL=null,NCT='list',NCTX={list:'Einträge zum Abhaken. Sie bleiben, bis du sie löschst.',daily:'Wird jeden Morgen zurückgesetzt und zählt in deine Tageswertung.',text:'Freies Textfeld für Notizen.'};
-function tabBody(ti){var secs=tabSecs(ti);if(ti===0||TABS[ti][1][0][2]==='prompts')return secs.map(sec).join('');
+function tabBody(ti){var secs=tabSecs(ti);if(solo(ti))return secs.map(sec).join('');
 var h=secs.map(function(s){var body=sec(s);if(!EDT)return body;return '<div class="edw"><div class="edbar">'+(s[3]?'<input class="gi" id="cn-'+s[0]+'" data-cn="'+s[0]+'" value="'+esc(s[1])+'" aria-label="Name der Karte" style="flex:1;width:auto;min-width:0"><button data-cd="'+s[0]+'" class="'+(CDEL===s[0]?'warn':'')+'">'+(CDEL===s[0]?'Wirklich löschen?':'🗑 Löschen')+'</button>':'<span>'+esc(s[1])+'</span><button data-ch="'+s[0]+'">Ausblenden</button>')+'</div>'+body+'</div>'}).join('');
 if(EDT){var hid=TABS[ti][1].filter(function(s){return S.hide.indexOf(s[0])>-1});h+='<div class="card edcard"><h2>Neue Karte<span>in „'+TABS[ti][0].replace(/^\S+\s/,'')+'“</span></h2><div class="add"><input id="nc-name" placeholder="Name, z. B. Steuer 2026" autocomplete="off"></div><div class="chips">'+[['list','Checkliste'],['daily','Täglich'],['text','Notiz']].map(function(x){return '<button data-nct="'+x[0]+'" class="'+(NCT===x[0]?'on':'')+'">'+x[1]+'</button>'}).join('')+'</div><div class="empty" id="nc-hint">'+NCTX[NCT]+'</div><div class="add"><button data-nc="1" style="flex:1;font-size:.95rem">Karte anlegen</button></div>'+(hid.length?'<div class="empty" style="margin-top:14px">Ausgeblendete Karten</div>'+hid.map(function(s){return '<div class="row"><span class="t">'+esc(s[1])+'</span><button class="ghostb" data-cu="'+s[0]+'">Einblenden</button></div>'}).join(''):'')+'</div>'}
 return h+'<button class="edtog" data-edt="1">'+(EDT?'✓ Fertig':'✎ Karten bearbeiten')+'</button>'}
@@ -657,7 +720,43 @@ if(d.ch){var hid=d.ch;S.hide.push(hid);save();render();toast('Karte ausgeblendet
 if(d.cu){var ui=S.hide.indexOf(d.cu);if(ui>-1)S.hide.splice(ui,1);save();render();toast('Karte wieder eingeblendet');return}
 if(d.cd){if(CDEL!==d.cd){CDEL=d.cd;render();return}var ix=S.cb.map(function(x){return x.id}).indexOf(d.cd);if(ix<0)return;var c2=S.cb[ix],dl=S.l[c2.id],dx=S.x[c2.id];S.cb.splice(ix,1);delete S.l[c2.id];delete S.x[c2.id];CDEL=null;save();render();toast('Karte „'+c2.n+'“ gelöscht',function(){S.cb.splice(ix,0,c2);if(dl)S.l[c2.id]=dl;if(dx!=null)S.x[c2.id]=dx;save();render()})}}
 app.addEventListener('keydown',function(e){var ds=e.target.dataset||{};if(e.key==='Enter'&&ds.sin){e.preventDefault();subAdd(ds.sin,+ds.k)}else if(e.key==='Enter'&&e.target.id==='nc-name'){e.preventDefault();cardAct({nc:1})}});
-g('nav').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(+b.dataset.t)});
+var LASTT={};
+g('nav').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.g!==undefined){var G=GROUPS[+b.dataset.g][2],k=LASTT[b.dataset.g];go(k!=null&&G.indexOf(k)>-1?k:G[0])}else go(+b.dataset.t)});
+
+/* ---------- Google Kalender (live über den Connector) ---------- */
+var CALS='Google Calendar',MCP=null,SAMPLE=null,GC={ev:[],st:'idle',msg:'',ed:null,busy:false,del:null,at:0},ASK={busy:false,a:'',q:''};
+function soft(){var a=document.activeElement;if(!a||(a.tagName!=='INPUT'&&a.tagName!=='TEXTAREA'&&a.tagName!=='SELECT'))render()}
+function evDay(e){var s=e.start||{};return s.date||(s.dateTime?ld(new Date(s.dateTime)):'')}
+function hm(dt){var d=new Date(dt);return('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function evTime(e){var s=e.start||{};return s.dateTime?hm(s.dateTime):''}
+function evKind(e){var t=(e.summary||'')+' '+(e.description||'');if(e.eventType==='BIRTHDAY'||/geburtstag|birthday/i.test(e.summary||''))return['bd','Geburtstag'];if(/⚠|frist|löschung|läuft ab|deadline/i.test(t))return['dl','Frist'];if(/zahlung|rechnung|fällig/i.test(e.summary||''))return['pay','Zahlung'];return['ev','Termin']}
+function dayLabel(d){var df=Math.round((new Date(d+'T12:00')-new Date(today+'T12:00'))/864e5);return df===0?'Heute':df===1?'Morgen':WD[wdn(d)]+', '+dfmt(d).slice(0,5)}
+function calErr(e){var c=(e&&e.code)||'',m={needs_reauth:'Google Kalender muss neu verbunden werden: claude.ai → Einstellungen → Connectors.',server_not_connected:'Google Kalender ist nicht verbunden. In claude.ai unter Einstellungen → Connectors hinzufügen.',selection_required:'Es gibt mehrere Google-Kalender-Verbindungen. Bitte in der Abfrage von claude.ai eine auswählen.',not_in_manifest:'Der Zugriff auf Google Kalender ist für diese Seite nicht erlaubt. Über das Menü „Berechtigungen“ freigeben.',approval_required:'Der Zugriff auf Google Kalender braucht deine Erlaubnis. Tippe auf „Neu laden“.',blocked_by_policy:'Google Kalender ist für dieses Konto gesperrt.',server_unavailable:'Google ist gerade nicht erreichbar. Gleich nochmal versuchen.',not_granted:'Kalender ist in dieser Ansicht nicht verfügbar.',capability_disabled:'Kalender ist in dieser Ansicht nicht verfügbar.',tool_error:'Google hat den Auftrag abgelehnt: '+((e&&e.message)||'')};return m[c]||'Kalender konnte nicht geladen werden ('+(c||'unbekannt')+').'}
+async function loadCal(fresh){if(!MCP){GC.st='na';return}if(!GC.ev.length)GC.st='load';try{var r=await MCP.callTool(CALS,'list_events',{startTime:today+'T00:00:00',endTime:addd(today,60)+'T00:00:00',orderBy:'startTime',pageSize:250,eventType:['DEFAULT','BIRTHDAY']},{cache:false});var p=r.payload||{};GC.ev=(p.events||[]).filter(function(e){return e.status!=='cancelled'&&evDay(e)});GC.st='ok';GC.msg='';GC.at=Date.now()}catch(e){GC.msg=calErr(e);GC.st=GC.ev.length?'ok':'err';if(['needs_reauth','server_not_connected','not_in_manifest','blocked_by_policy','approval_required'].indexOf(e&&e.code)>-1){GC.ev=[];GC.st='err'}}if(cur===0||cur===1||cur===13)soft()}
+function evPayload(t,d,s,en,n){if(s){var st=d+'T'+s+':00',ee=en;if(!ee||ee<=s){var mn=Math.min(+s.slice(0,2)*60+(+s.slice(3))+60,1439);ee=('0'+Math.floor(mn/60)).slice(-2)+':'+('0'+mn%60).slice(-2)}return{summary:t,description:n||'',startTime:st,endTime:d+'T'+ee+':00',allDay:false}}return{summary:t,description:n||'',startTime:d+'T00:00:00',endTime:addd(d,1)+'T00:00:00',allDay:true}}
+function evRow(e){if(GC.ed===e.id)return evForm(e);var k=evKind(e),tm=evTime(e);return '<div class="ev"><span class="tm">'+(tm||'ganztägig')+'</span><span class="ti"><span class="tag '+k[0]+'">'+k[1]+'</span>'+esc(e.summary||'(ohne Titel)')+(e.description?'<small>'+esc(e.description)+'</small>':'')+'</span><button class="ebtn" data-ge="'+esc(e.id)+'" aria-label="'+esc(e.summary||'Termin')+' bearbeiten">'+ico('pen')+'</button></div>'}
+function evForm(e){var d=e?evDay(e):today,s=e&&e.start&&e.start.dateTime?hm(e.start.dateTime):'',en=e&&e.end&&e.end.dateTime?hm(e.end.dateTime):'';return '<div class="evf"><div style="display:grid;gap:4px"><label for="ef-t">Titel</label><input id="ef-t" value="'+esc(e?e.summary||'':'')+'" placeholder="z. B. Gespräch mit Kunde"></div><div class="r"><div><label for="ef-d">Datum</label><input id="ef-d" type="date" value="'+d+'"></div><div><label for="ef-s">Von (leer = ganztägig)</label><input id="ef-s" type="time" value="'+s+'"></div><div><label for="ef-e">Bis</label><input id="ef-e" type="time" value="'+en+'"></div></div><div style="display:grid;gap:4px"><label for="ef-n">Notiz</label><textarea id="ef-n">'+esc(e?e.description||'':'')+'</textarea></div>'+(e&&e.recurringEventId?'<div class="empty">Wiederkehrender Termin: Änderungen gelten nur für diesen Tag.</div>':'')+'<div class="btns"><button class="btn p" data-ga="save"'+(GC.busy?' disabled':'')+'>'+(GC.busy?'Speichert …':'Speichern')+'</button>'+(e?'<button class="btn'+(GC.del===e.id?' w':'')+'" data-ga="del"'+(GC.busy?' disabled':'')+'>'+(GC.del===e.id?'Wirklich löschen?':'Löschen')+'</button>':'')+'<button class="btn" data-ga="cancel">Abbrechen</button></div></div>'}
+function calNote(){if(GC.st==='na')return NOCLAUDE?'':'<div class="note">Der Kalender ist nur im Claude-Dashboard verfügbar, wenn Google Kalender in claude.ai verbunden ist.</div>';if(GC.st==='load'||GC.st==='idle')return '<div class="empty">Kalender wird geladen …</div>';return GC.msg?'<div class="note'+(GC.st==='err'?' err':'')+'">'+esc(GC.msg)+'</div>':''}
+function gcalc(){var h='<div class="card" id="c-gcal"><h2>Kalender<span>Google'+(GC.at?' · aktualisiert '+hm(GC.at):'')+'</span></h2><div class="btns" style="margin-bottom:6px"><button class="btn p" data-ga="new"'+(GC.st==='na'?' disabled':'')+'>+ Neuer Termin</button><button class="btn" data-ga="ref" aria-label="Neu laden">'+ico('ref').replace('<svg','<svg width="18" height="18" style="vertical-align:-4px"')+' Neu laden</button></div>'+calNote();if(GC.ed==='new')h+=evForm(null);var by={},days=[];GC.ev.forEach(function(e){var d=evDay(e);if(d<today)return;if(!by[d]){by[d]=[];days.push(d)}by[d].push(e)});if(GC.st==='ok'&&!days.length)h+='<div class="empty">Keine Termine in den nächsten 60 Tagen.</div>';days.forEach(function(d){h+='<div class="ag-d'+(d===today?' td':'')+'">'+dayLabel(d)+' <small>'+dfmt(d)+'</small></div>'+by[d].map(evRow).join('')});return h+'</div>'}
+function upcoming(n){return GC.ev.filter(function(e){var d=evDay(e);return d>=today&&d<=addd(today,n)})}
+function gtodc(){if(NOCLAUDE)return '';var L=GC.ev.filter(function(e){var d=evDay(e);return d===today||d===addd(today,1)});var h='<div class="card" id="c-gtoday"><h2>Termine heute & morgen<span>'+L.length+'</span></h2>'+calNote();if(GC.st==='ok'&&!L.length)h+='<div class="empty">Heute und morgen keine Termine.</div>';L.forEach(function(e){var k=evKind(e);h+='<div class="ev"><span class="tm">'+(evDay(e)===today?'heute':'morgen')+'<br>'+(evTime(e)||'')+'</span><span class="ti"><span class="tag '+k[0]+'">'+k[1]+'</span>'+esc(e.summary||'')+'</span></div>'});return h+'<div class="btns" style="margin-top:8px"><button class="btn" data-gotab="13">Zum Kalender</button></div></div>'}
+function nextc(){var L=upcoming(7),loc=(S.l.termin||[]).filter(function(i){return i.dt>=today&&i.dt<=addd(today,7)});var h='<div class="card"><h2>Nächste 7 Tage<span>'+(L.length+loc.length)+' Einträge</span></h2>'+calNote();var rows=L.map(function(e){return[evDay(e),evTime(e),e.summary||'',evKind(e)]}).concat(loc.map(function(i){return[i.dt,'',i.t,['ev','Frist']]})).sort(function(a,b){return(a[0]+a[1])<(b[0]+b[1])?-1:1}).slice(0,8);if(!rows.length&&GC.st!=='load')h+='<div class="empty">Nichts geplant in den nächsten 7 Tagen.</div>';rows.forEach(function(r){h+='<div class="ev"><span class="tm">'+dayLabel(r[0])+(r[1]?'<br>'+r[1]:'')+'</span><span class="ti"><span class="tag '+r[3][0]+'">'+r[3][1]+'</span>'+esc(r[2])+'</span></div>'});return h+'<div class="btns" style="margin-top:8px"><button class="btn" data-gotab="13">Ganzer Kalender</button></div></div>'}
+function kundc(){var it=(S.l.pipe||[]).map(function(i,k){return[i,k]}).sort(function(a,b){return(b[0].s||0)-(a[0].s||0)}),of=it.reduce(function(s,p){return s+(p[0].o||0)},0);var h='<div class="card w"><h2>Kunden<span>'+(of?eur(of)+' € offen':it.length+' in der Pipeline')+'</span></h2>';if(!it.length)h+='<div class="empty">Noch keine Kunden. Lege sie unter Arbeit → Business → Kunden-Pipeline an, mit nächstem Schritt und offenem Betrag.</div>';else h+='<div class="kd">'+it.map(function(p){var i=p[0];return '<div class="kc"><span class="st">'+ST[i.s||0]+'</span><b>'+esc(i.t)+'</b>'+(i.n?'<span class="ns">→ '+esc(i.n)+'</span>':'<span class="empty" style="padding:0">Kein nächster Schritt</span>')+(i.o?'<span class="of">'+eur(i.o)+' € offen</span>':'')+'</div>'}).join('')+'</div>';return h+'<div class="btns" style="margin-top:10px"><button class="btn" data-gotab="3">Pipeline bearbeiten</button></div></div>'}
+function askc(){if(NOCLAUDE)return '';return '<div class="card w"><h2>Frag Claude<span>sieht Kalender, Aufgaben, Kunden</span></h2><div class="ask"><label for="ask-in" class="empty" style="position:absolute;left:-9999px">Frage an Claude</label><input id="ask-in" placeholder="z. B. „Was steht diese Woche an?“ oder „Trag Freitag 15 Uhr Telefonat mit Kunde ein“" value="'+esc(ASK.q)+'" autocomplete="off"><button class="btn p" data-ask="1"'+(ASK.busy?' disabled':'')+'>'+(ASK.busy?'…':'Fragen')+'</button></div><div class="ans" id="ask-out" aria-live="polite">'+esc(ASK.a)+'</div></div>'}
+function ctxText(){var L=upcoming(21).map(function(e){return'- '+evDay(e)+' '+(evTime(e)||'ganztägig')+' | '+(e.summary||'')+' | id='+e.id}).join('\n')||'- keine';var t3=(S.l.top3||[]).map(function(i){return'- '+(i.d?'[x] ':'[ ] ')+i.t}).join('\n')||'- keine';var pl=(S.l.planer||[]).map(function(i){return'- '+i.t+' (Deadline '+i.dl+')'}).join('\n')||'- keine';var kp=(S.l.pipe||[]).map(function(i){return'- '+i.t+' | '+ST[i.s||0]+(i.n?' | nächster Schritt: '+i.n:'')+(i.o?' | offen '+eur(i.o)+' €':'')}).join('\n')||'- keine';var m=money();return'Heute: '+WD[wdn(today)]+' '+today+'\n\nTermine (nächste 21 Tage, Google Kalender):\n'+L+'\n\nTop 3 heute:\n'+t3+'\n\nAufgabenplaner:\n'+pl+'\n\nKunden-Pipeline:\n'+kp+'\n\nFrei verfügbar: '+eur(m.free)+' €'}
+function askOut(){var o=g('ask-out');if(o)o.textContent=ASK.a}
+async function askGo(){var inp=g('ask-in'),q=inp?inp.value.trim():'';if(!q||ASK.busy)return;ASK.q=q;if(!SAMPLE){ASK.a='„Frag Claude“ funktioniert nur im Claude-Dashboard auf claude.ai.';render();return}ASK.busy=true;ASK.a='Denke nach …';render();var wrote=false;
+var tools=[{name:'termine_lesen',description:'Liest Termine aus Pascals Google Kalender in einem Zeitraum.',inputSchema:{type:'object',properties:{von:{type:'string',description:'Datum JJJJ-MM-TT'},bis:{type:'string',description:'Datum JJJJ-MM-TT, nach von'}},required:['von','bis']},execute:async function(a){ASK.a='Lese Kalender …';askOut();var r=await MCP.callTool(CALS,'list_events',{startTime:a.von+'T00:00:00',endTime:a.bis+'T23:59:00',orderBy:'startTime',pageSize:100,eventType:['DEFAULT','BIRTHDAY']},{cache:false});return((r.payload||{}).events||[]).map(function(e){return{id:e.id,datum:evDay(e),uhrzeit:evTime(e)||'ganztägig',titel:e.summary||'',notiz:e.description||''}})}},
+{name:'termin_anlegen',description:'Legt einen neuen Termin in Pascals Google Kalender an. Nur nutzen, wenn Pascal das ausdrücklich verlangt.',inputSchema:{type:'object',properties:{titel:{type:'string'},datum:{type:'string',description:'JJJJ-MM-TT'},uhrzeit:{type:'string',description:'HH:MM, leer = ganztägig'},ende:{type:'string',description:'HH:MM, optional'},notiz:{type:'string'}},required:['titel','datum']},execute:async function(a){ASK.a='Lege Termin an …';askOut();await MCP.callTool(CALS,'create_event',evPayload(a.titel,a.datum,a.uhrzeit||'',a.ende||'',a.notiz||''));wrote=true;return{ok:true}}},
+{name:'termin_aendern',description:'Ändert einen bestehenden Termin (id aus der Terminliste). Nur nutzen, wenn Pascal das ausdrücklich verlangt.',inputSchema:{type:'object',properties:{id:{type:'string'},titel:{type:'string'},datum:{type:'string',description:'JJJJ-MM-TT'},uhrzeit:{type:'string',description:'HH:MM, leer = ganztägig'},ende:{type:'string'},notiz:{type:'string'}},required:['id']},execute:async function(a){ASK.a='Ändere Termin …';askOut();var e=GC.ev.filter(function(x){return x.id===a.id})[0],inp={eventId:a.id};if(a.titel)inp.summary=a.titel;if(a.notiz!=null)inp.description=a.notiz;if(a.datum||a.uhrzeit!=null){var p=evPayload(a.titel||(e&&e.summary)||'',a.datum||(e?evDay(e):today),a.uhrzeit!=null?a.uhrzeit:(e?evTime(e):''),a.ende||'','');inp.startTime=p.startTime;inp.endTime=p.endTime;inp.allDay=p.allDay}await MCP.callTool(CALS,'update_event',inp);wrote=true;return{ok:true}}}];
+var prompt='Du bist der Assistent in Pascals Lebensdashboard. Antworte auf Deutsch, kurz und konkret, in Du-Form, ohne Überschriften und ohne Markdown. Du kannst Termine in seinem Google Kalender lesen, anlegen und ändern. Löschen kannst du nicht: Sag ihm dann, dass er das im Reiter Kalender macht. Lege Termine nur an oder ändere sie, wenn er das ausdrücklich verlangt, und sag danach in einem Satz, was du getan hast. Erfinde keine Daten.\n\nDaten aus dem Dashboard:\n'+ctxText()+'\n\nPascals Frage: '+q;
+try{await SAMPLE(prompt,{tools:MCP?tools:undefined,cache:false,onText:function(x){ASK.a=x.text;askOut()}})}catch(e){var c=e&&e.code;ASK.a=(e&&e.text?e.text+'\n\n':'')+(c==='not_granted'?'Du hast Claude für diese Seite nicht erlaubt.':c==='rate_limited'?'Gerade zu viele Anfragen. Versuch es gleich nochmal.':c==='cancelled'?'Abgebrochen.':'Hat nicht geklappt ('+(c||'Fehler')+').')}ASK.busy=false;if(wrote)await loadCal(true);soft();askOut()}
+async function calSave(){var t=g('ef-t').value.trim(),d=g('ef-d').value,s=g('ef-s').value,en=g('ef-e').value,n=g('ef-n').value.trim();if(!t||!d){toast('Bitte Titel und Datum eintragen');return}var p=evPayload(t,d,s,en,n),isNew=GC.ed==='new';GC.busy=true;render();try{if(isNew)await MCP.callTool(CALS,'create_event',p);else{p.eventId=GC.ed;await MCP.callTool(CALS,'update_event',p)}GC.ed=null;toast(isNew?'Termin angelegt':'Termin gespeichert')}catch(e){toast(calErr(e))}GC.busy=false;await loadCal(true);render()}
+async function calDel(){var id=GC.ed;if(GC.del!==id){GC.del=id;render();return}GC.busy=true;render();try{await MCP.callTool(CALS,'delete_event',{eventId:id});GC.ed=null;toast('Termin gelöscht')}catch(e){toast(calErr(e))}GC.busy=false;GC.del=null;await loadCal(true);render()}
+app.addEventListener('click',function(e){var b=e.target.closest('[data-ga],[data-ge],[data-ask],[data-gotab]');if(!b)return;var d=b.dataset;if(d.gotab){go(+d.gotab);return}if(d.ask){askGo();return}if(d.ge){GC.ed=d.ge;GC.del=null;render();var f=g('ef-t');if(f)f.focus();return}if(d.ga==='new'){GC.ed='new';GC.del=null;render();var f2=g('ef-t');if(f2)f2.focus();return}if(d.ga==='cancel'){GC.ed=null;GC.del=null;render();return}if(d.ga==='ref'){GC.msg='';loadCal(true);toast('Kalender wird aktualisiert');return}if(d.ga==='save'){calSave();return}if(d.ga==='del'){calDel()}});
+app.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id==='ask-in'){e.preventDefault();askGo()}});
+(async function(){try{if(typeof claude==='undefined'){GC.st='na';return}MCP=await claude.use('mcp');SAMPLE=await claude.use('sample');if(!MCP){GC.st='na';soft();return}loadCal()}catch(e){GC.st='na'}})();
+setInterval(function(){if(MCP&&!GC.ed&&!document.hidden)loadCal()},600000);
 
 /* ---------- Toast ---------- */
 var TT=null;function toast(m,undo){var el=g('toast');el.innerHTML=esc(m)+(undo?' · <u style="cursor:pointer;pointer-events:auto" id="undo">Rückgängig</u>':'');el.style.pointerEvents=undo?'auto':'none';el.classList.add('on');clearTimeout(TT);TT=setTimeout(function(){el.classList.remove('on');el.style.pointerEvents='none'},undo?5000:2200);if(undo){g('undo').onclick=function(){undo();el.classList.remove('on');toast('Wiederhergestellt')}}}
@@ -699,5 +798,5 @@ function adopt(d){try{var n=JSON.parse(d.json);if(!n||!n.l)return;if(S.ts){try{l
 render();
 if('serviceWorker' in navigator&&location.protocol!=='file:'){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();document.addEventListener('visibilitychange',function(){if(!document.hidden)r.update()})}).catch(function(){});var had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(had){var a=document.activeElement;if(!a||(a.tagName!=='INPUT'&&a.tagName!=='TEXTAREA'))location.reload()}})})}
 </script>
-</body>
-</html>
+
+</body></html>
