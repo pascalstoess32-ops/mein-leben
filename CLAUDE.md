@@ -11,6 +11,13 @@ Zwei Versionen derselben App:
 - Das Repo ist öffentlich: keine Einträge, persönlichen Daten oder Links zum Artifact hier ablegen.
 - Wochenende: Sport zählt Sa/So nicht in die Tageswertung (Bonus); der Aufgabenplaner verteilt keine Arbeit aufs Wochenende.
 
+## Bauweg seit 2026-11-25 (eine Quelle für beide Versionen)
+- Quelle: `~/Claude-Projekte/mein-leben-dashboard/dashboard.html` (nicht in diesem öffentlichen Repo, enthält Kundendaten im Block `/*SEED*/`).
+- Dashboard: diese Datei mit dem Artifact-Tool auf die Dashboard-URL veröffentlichen (Link im Second Brain).
+- App: `python3 ~/Claude-Projekte/mein-leben-dashboard/build_pwa.py ~/Claude-Projekte/mein-leben-dashboard/dashboard.html index.html <Version> "<Notiz>"`, dann `VERSION` in `sw.js` erhöhen, committen, pushen. Das Skript tauscht den Kopf, entfernt Konto-Sync und `/*SEED*/`, bricht bei Kundennamen ab.
+- Stolperstein: Klassennamen vor Neuvergabe suchen (`.gbar` war schon der Zielbalken und hat die Navigation auf 10 px gequetscht). Optik prüfen mit Chrome headless: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --window-size=500,700 --user-data-dir=<tmp> --screenshot=<png> file://<html>` (mind. 500 px breit, auf Datei warten, Prozess danach beenden).
+- Leiste mit den Bereichen steht oben (unten fixiert funktioniert im claude.ai-Rahmen nicht).
+
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
 - **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy als Leiste unten. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
