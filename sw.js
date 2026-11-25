@@ -1,5 +1,5 @@
 // Offline-Speicher für „Mein Leben“. Bei Änderungen an der App VERSION erhöhen.
-var VERSION = 'leben-v14';
+var VERSION = 'leben-v15';
 var SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', function (e) {
