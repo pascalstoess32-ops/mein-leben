@@ -31,6 +31,10 @@ Zwei Versionen derselben App:
 - **Menüplan**: Gericht antippen zeigt das passende Rezept aus „Rezepte“ (erstes Wort des Rezepttitels). „Menüplan bearbeiten“ zeigt die normale Liste.
 - Automatische Einkaufsliste aus dem Menüplan: nicht gebaut, Rezepte sind freier Text ohne Mengenliste.
 
+## Geld seit App-Version 25 (2026-11-25)
+- Karte „Wiederkehrend“ (`fix`): Einträge `{t, a (Ausgabe negativ), rh: m|q|y, dt: nächstes Datum}`. `occ()` erzeugt die Termine. In `money()`: Termine nach dem Kontostand-Datum bis heute zählen zum Kontostand, die nächsten 30 Tage als geplant/erwartet (gleiche Logik wie Einzelbuchungen). Alte Einträge ohne `rh`/`dt` zählen nur in der Monatssumme.
+- Planer: Ist die letzte Einheit abgehakt, wird die Aufgabe entfernt (Rückgängig im Hinweis).
+
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
 - **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy Leiste fest unten. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
