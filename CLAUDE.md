@@ -16,10 +16,10 @@ Zwei Versionen derselben App:
 - Dashboard: diese Datei mit dem Artifact-Tool auf die Dashboard-URL veröffentlichen (Link im Second Brain).
 - App: `python3 ~/Claude-Projekte/mein-leben-dashboard/build_pwa.py ~/Claude-Projekte/mein-leben-dashboard/dashboard.html index.html <Version> "<Notiz>"`, dann `VERSION` in `sw.js` erhöhen, committen, pushen. Das Skript tauscht den Kopf, entfernt Konto-Sync und `/*SEED*/`, bricht bei Kundennamen ab.
 - Stolperstein: Klassennamen vor Neuvergabe suchen (`.gbar` war schon der Zielbalken und hat die Navigation auf 10 px gequetscht). Optik prüfen mit Chrome headless: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --window-size=500,700 --user-data-dir=<tmp> --screenshot=<png> file://<html>` (mind. 500 px breit, auf Datei warten, Prozess danach beenden).
-- Leiste mit den Bereichen steht oben (unten fixiert funktioniert im claude.ai-Rahmen nicht).
+- Leiste mit den Bereichen: am Handy fest unten (Klasse `.areabar`), am Mac oben; Unterreiter oben. Der frühere „Leiste unsichtbar“-Fehler war die Namenskollision, nicht die feste Position.
 
 ## Nur im Claude-Dashboard (Stand 2026-11-25, Artifact-Version 27)
-- **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, Leiste oben. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
+- **Navigation:** 5 Bereiche (Start, Heute, Kalender, Arbeit, Leben) mit Unterreitern, am Handy Leiste fest unten. Tagesbogen nur auf Start. Reiter-Indizes und Hash-Namen der alten 13 Reiter sind unverändert, `kalender` ist Index 13.
 - **Kalender (live):** Connector „Google Calendar“ über die Fähigkeit `mcp` (list/create/update/delete_event). Agenda 60 Tage, Bearbeiten im Formular, Karte „Termine heute & morgen“ unter Heute, „Nächste 7 Tage“ auf Start.
 - **Frag Claude** (Fähigkeit `sample`) auf Start: liest Termine, Top 3, Planer und Pipeline; darf Termine anlegen und ändern, aber nicht löschen.
 - **Kunden-Pipeline:** neue Felder `n` (nächster Schritt) und `o` (offener Betrag), Karte „Kunden“ auf Start.
